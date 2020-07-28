@@ -18,40 +18,35 @@ class Home extends Component {
         this.getData()
     }
     getData(){
+        let i = ""
         axios.get('https://www.hatchways.io/api/assessment/students')
-            .then((response) => {
+            .then(response => { console.log(response.data.students[0].email)
+                let i = [0, 1, 2, 3]
+                let students = (response.data.students[i])
+                let studentsArray = students.forEach(element => (element))
+                students.forEach
 
-                const studentsArray = (response.data.students)
-                studentsArray.email = this.state.email
-                studentsArray.forEach
-
-
-
-
-
-            ;
+                this.setState();
             })
-
-
-
-            .catch((error) => {
-                // handle error
+            .catch(error => {
                 console.log(error);
-            })
+            });
     }
 
+
     render() {
-        return (
-            <Row className="Home">
-                <Col md={8} sm={12}>
-                    { this.state.pic && <img className="pic" src={this.state.pic} alt={this.state.pic}/> }
-                    { this.state.email && <h1 className="display-1 font-weight-bolder">{this.state.email}</h1> }
-                    { this.state.company && <h3 className="display-4 font-weight-light">{this.state.company}</h3> }
-                    { this.state.skill && <h3 className="lead font-weight-light">{this.state.skill}</h3> }
-                    { this.state.average && <h3 className="lead font-weight-light">{this.state.average}</h3> }
-                </Col>
-            </Row>
-        )
+
+    return (
+        <Row className="Home">
+            <Col md={8} sm={12}>
+                {this.state.pic && <img className="pic" src={this.state.pic} alt={this.state.pic}/>}
+                {this.state.email && <h1 className="display-1 font-weight-bolder">{this.state.email}</h1>}
+                {this.state.company && <h3 className="display-4 font-weight-light">{this.state.company}</h3>}
+                {this.state.skill && <h3 className="lead font-weight-light">{this.state.skill}</h3>}
+                {this.state.average && <h3 className="lead font-weight-light">{this.state.average}</h3>}
+            </Col>
+        </Row>
+        );
     }
 }
 
